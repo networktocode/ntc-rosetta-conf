@@ -16,11 +16,7 @@ help:
 
 .PHONY: help Makefile
 
-# Catch-all target: route all unknown targets to Sphinx using the new
-# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile
-	cp ../CHANGELOG.rst .
-	cp ../CONTRIBUTING.rst .
+yang-docs:
 	pyang \
 		--plugindir $(OC_PYANG_PLUGINS_DIR) \
 		-f docs \
@@ -35,4 +31,10 @@ help:
 		--doc-format rst \
 		--strip-ns \
 		../ntc_rosetta_conf/yang/ntc-rosetta-conf.yang > yang/ntc-rosetta-conf.rst
+
+# Catch-all target: route all unknown targets to Sphinx using the new
+# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
+%: Makefile
+	cp ../CHANGELOG.rst .
+	cp ../CONTRIBUTING.rst .
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)

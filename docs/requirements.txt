@@ -2,4 +2,4 @@ sphinx
 sphinx_rtd_theme
 sphinxcontrib-napoleon
 nbsphinx
--e git://github.com/dbarrosop/oc-pyang.git@ntc-yang-models#egg=oc-pyang
+# -e git://github.com/dbarrosop/oc-pyang.git@ntc-yang-models#egg=oc-pyang
