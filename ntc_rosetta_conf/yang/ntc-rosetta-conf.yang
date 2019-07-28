@@ -1,0 +1,157 @@
+module ntc-rosetta-conf {
+    yang-version "1";
+    namespace "https://github.com/networktocode/ntc-rosetta-conf/blob/first/ntc_rosetta_conf/yang/ntc-rosetta-conf.yang";
+
+    prefix "ntc-rosetta-conf";
+
+    description
+    "This module describes all the operations that ntc-rosetta-conf can perform.";
+
+    revision 2019-06-26 {
+      description
+        "Initial revision.";
+      reference
+        "klaatu barada nikto";
+    }
+
+    identity RESULT {
+        description "Base identity for results";
+    }
+
+    identity success {
+        base RESULT;
+        description "Operation succeeded";
+    }
+
+    identity error {
+        base RESULT;
+        description "Operation failed";
+    }
+
+    identity PLATFORM {
+        description "Base identity for device's platform";
+    }
+
+    identity ios {
+        base PLATFORM;
+        description "IOS device";
+    }
+
+    identity junos {
+        base PLATFORM;
+        description "Junos device";
+    }
+
+    grouping device-top {
+        container device {
+            description "Top-level container for device configuration and state";
+            container config {
+                description "Top-level container for device configuration";
+                leaf platform {
+                    description "Device platform. Some RPC methods will require you to set this";
+                    type identityref {
+                        base PLATFORM;
+                    }
+                }
+            }
+        }
+    }
+
+    grouping rosetta-configuration-top {
+        uses device-top;
+    }
+
+    grouping operation-result {
+        leaf result {
+            description "Whether the operation succeeded or not";
+            type identityref {
+                base ntc-rosetta-conf:RESULT;
+            }
+        }
+        leaf error-message {
+            description "If the operation failed, message describing the error";
+            type string;
+            when "../result = 'ntc-rosetta-conf:ERROR'";
+        }
+    }
+
+    uses rosetta-configuration-top;
+
+    rpc ping {
+        description
+            "Ping the server";
+        output {
+            uses operation-result;
+        }
+    }
+
+    rpc merge {
+        description
+            "Call ntc-rosetta merge method. Visit https://ntc-rosetta.readthedocs.io/en/latest/tutorials/ios_merging.html for details";
+        input {
+            leaf replace {
+                description "Replace argument for the given operation";
+                type boolean;
+                default false;
+            }
+        }
+        output {
+            uses operation-result;
+            leaf native {
+                type string;
+                description "Configuration in native format";
+                mandatory true;
+            }
+        }
+    }
+
+    rpc parse {
+        description
+            "Call ntc-rosetta parse method. Visit https://ntc-rosetta.readthedocs.io/en/latest/tutorials/ios_parsing.html for detauls.
+            Loads the parsed object into the candidate database.";
+        input {
+            leaf native {
+                description "Native confguration to parse";
+                type string;
+                mandatory true;
+            }
+            leaf validate {
+                description "Valiadte the configuration prior to load it into the candidate databbase";
+                type boolean;
+                default true;
+            }
+        }
+        output {
+            uses operation-result;
+        }
+    }
+
+    rpc translate {
+        description
+            "Call ntc-rosetta parse method. Visit https://ntc-rosetta.readthedocs.io/en/latest/tutorials/ios_translate.html";
+        input {
+            leaf database {
+                description
+                    "Database to translate";
+                type enumeration {
+                    enum candidate;
+                    enum running;
+                }
+                mandatory true;
+            }
+            leaf replace {
+                description "Replace argument for the given operation";
+                type boolean;
+                default false;
+            }
+        }
+        output {
+            uses operation-result;
+            leaf native {
+                type string;
+                description "Configuration in native format";
+                mandatory true;
+            }
+        }
+    }
+}

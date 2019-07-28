@@ -1,0 +1,3 @@
+V	200716101024Z		6F52E7D460074E3E8B2BA9FFA0DD1860	client_ca.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=ntc-rosetta-conf-client-authority
+V	200716101240Z		169491A88B7DD3854005F8EA49C24E33	jane@networktocode.com.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=jane@networktocode.com
+V	200716101249Z		30C42A57CF486D3CEA49A303311C43CF	john@networktocode.com.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=john@networktocode.com
