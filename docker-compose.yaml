@@ -1,0 +1,56 @@
+---
+version: '2.2'
+
+services:
+    ntc-rosetta-conf:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8443:8443
+        networks:
+            net1:
+                ipv4_address: 172.21.32.4
+                ipv6_address: 2001:db8:32::4
+        command: [
+            "ntc-rosetta-conf",
+            "serve",
+            "--datamodel", "openconfig",
+            "--pid-file", "/tmp/ntc-rosetta-conf-demo.pid",
+            "--log-level", "debug",
+            "--data-file", "tests/data/interfaces_empty.json",
+            "--port", "8443",
+            "--ssl-crt", "tests/certs/server_example.crt",
+            "--ssl-key", "tests/certs/server_example.key",
+            "--ca-crt", "tests/certs/ca.pem",
+        ]
+
+    jupyter:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 8888:8888
+        volumes:
+            - .:/ntc-rosetta-conf
+        networks:
+            net1:
+                ipv4_address: 172.21.32.5
+                ipv6_address: 2001:db8:32::5
+        command:
+            - jupyter
+            - notebook
+            - --allow-root
+            - --ip=0.0.0.0
+            - --NotebookApp.token=''
+        extra_hosts:
+            ntc-rosetta-conf: 172.21.32.4
+
+networks:
+    net1:
+        driver: bridge
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 172.21.32.0/24
+            - subnet: 2001:db8:32::/64

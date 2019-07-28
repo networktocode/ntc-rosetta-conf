@@ -1,0 +1,7 @@
+{
+	"openconfig-interfaces:config": {
+		"name": "eth0",
+		"description": "a new interface description",
+		"type": "iana-if-type:ethernetCsmacd"
+	}
+}

@@ -1,0 +1,10 @@
+{
+    "openconfig-interfaces:interface": {
+        "name": "eth1",
+        "config": {
+            "name": "eth1",
+            "description": "another interface",
+            "type": "iana-if-type:ethernetCsmacd"
+        }
+    }
+}

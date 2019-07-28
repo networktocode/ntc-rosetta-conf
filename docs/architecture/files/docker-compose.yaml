@@ -1,0 +1,74 @@
+---
+version: '2.2'
+
+services:
+    loadbalancer:
+        image: haproxy:2.0-alpine
+        volumes:
+            - ./haproxy:/etc/haproxy
+        command: [
+            "haproxy",
+            "-f", "/etc/haproxy/haproxy.cfg",
+        ]
+        ports:
+            - 65443:65443
+        networks:
+            net1:
+                ipv4_address: 172.21.33.10
+                ipv6_address: 2001:db8:33::10
+
+    rtr00:
+        build:
+            context: ../../..
+            dockerfile: Dockerfile
+            args:
+                PYTHON: 3.6
+        networks:
+            net1:
+                ipv4_address: 172.21.33.100
+                ipv6_address: 2001:db8:33::100
+        volumes:
+            - ./data/rtr00:/data
+        command: [
+            "ntc-rosetta-conf",
+            "serve",
+            "--datamodel", "openconfig",
+            "--pid-file", "/tmp/ntc-rosetta-conf-demo.pid",
+            "--log-level", "debug",
+            "--data-file", "/data/data.json",
+            "--port", "8443",
+            "--disable-ssl",
+        ]
+
+    rtr01:
+        build:
+            context: ../../..
+            dockerfile: Dockerfile
+            args:
+                PYTHON: 3.6
+        networks:
+            net1:
+                ipv4_address: 172.21.33.101
+                ipv6_address: 2001:db8:33::101
+        volumes:
+            - ./data/rtr01:/data
+        command: [
+            "ntc-rosetta-conf",
+            "serve",
+            "--datamodel", "openconfig",
+            "--pid-file", "/tmp/ntc-rosetta-conf-demo.pid",
+            "--log-level", "debug",
+            "--data-file", "/data/data.json",
+            "--port", "8443",
+            "--disable-ssl",
+        ]
+
+networks:
+    net1:
+        driver: bridge
+        enable_ipv6: true
+        ipam:
+            config:
+            - subnet: 172.21.33.0/24
+            - subnet: 2001:db8:33::/64
+
