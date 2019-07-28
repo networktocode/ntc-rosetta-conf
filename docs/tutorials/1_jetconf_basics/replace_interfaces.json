@@ -1,0 +1,18 @@
+{
+	"openconfig-interfaces:interface": [
+		{
+			"name": "eth1",
+			"config": {
+				"name": "eth1",
+				"type": "iana-if-type:ethernetCsmacd"
+			}
+		},
+		{
+			"name": "eth2",
+			"config": {
+				"name": "eth2",
+				"type": "iana-if-type:ethernetCsmacd"
+			}
+		}
+	]
+}

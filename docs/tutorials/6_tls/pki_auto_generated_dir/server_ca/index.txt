@@ -1,0 +1,3 @@
+V	200716101341Z		C50D0B5178283FDF48323C5FB1A43440	server_ca.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=ntc-rosetta-conf-server-authority
+V	200716101419Z		A28EF98C0F98D06AAB0C3DDA8700E569	rtr00.lab.local.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=rtr00.lab.local
+V	200716101430Z		127841EC0C4940DC39E2B4513AA5E229	rtr01.lab.local.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=rtr01.lab.local

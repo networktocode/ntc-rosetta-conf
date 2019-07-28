@@ -1,0 +1,7 @@
+{
+    "ntc-rosetta-conf:device": {
+        "config": {
+            "platform": "ios"
+        }
+    }
+}

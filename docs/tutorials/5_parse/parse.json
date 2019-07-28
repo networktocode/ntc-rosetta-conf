@@ -1,0 +1,6 @@
+{
+    "ntc-rosetta-conf:input": {
+        "validate": true,
+        "native": "interface GigabitEthernet0\n   description an interface description\n   exit\n!\ninterface GigabitEthernet1\n   description another interface\n   exit\n!\n"
+    }
+}

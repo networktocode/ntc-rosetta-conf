@@ -1,0 +1,4 @@
+V	200726083808Z		7C8EB7ADEC9DBED76B141CD3D609D657	server_ca.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=ntc-rosetta-conf-server-authority
+V	200726083823Z		93120070534D41B99BD94394FB5CF810	rtr00.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=rtr00
+V	200726083830Z		C9045C99A94708DB152C43D967BE50A8	rtr01.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=rtr01
+V	200726083856Z		BBD386A221FAD86A0EB7026451DADF2E	rosetta.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=rosetta

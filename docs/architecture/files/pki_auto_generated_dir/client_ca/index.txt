@@ -1,0 +1,4 @@
+V	200726083721Z		E87F7D7B4201055980E75F30FDD587E5	client_ca.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=ntc-rosetta-conf-client-authority
+V	200726083744Z		4F21CDDE2AAD61A779D3012238875671	jane@networktocode.com.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=jane@networktocode.com
+V	200726092351Z		B20019D7E6035D617AFDA9CD5B213E8A	nginx.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=nginx
+V	200726102447Z		7CC6C0DC2121045362C36D9A63DB6E48	loadbalancer.crt	/C=Sweden/O=NTC/OU=Eng/L=Stockholm/ST=Stockholm/CN=loadbalancer
