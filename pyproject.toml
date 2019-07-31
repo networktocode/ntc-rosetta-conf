@@ -3,6 +3,9 @@ name = "ntc-rosetta-conf"
 version = "0.1.0"
 description = "Restconf interface for rosetta"
 authors = ["David Barroso <dbarrosop@dravetech.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/networktocode/ntc-rosetta-conf"
 
 [tool.poetry.scripts]
 ntc-rosetta-conf = 'ntc_rosetta_conf.cmd:cli'
