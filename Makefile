@@ -82,4 +82,4 @@ tests: build_test_containers black pylama mypy start-dev-containers nbval
 .PHONY: publish
 publish:
 	${DOCKER} \
-		poetry publish --build --username=$(PYPI_USER) --password="$(PYPI_PASSWORD)"
+		poetry publish --build -u __token__ -p "$(PYPI_TOKEN)"
